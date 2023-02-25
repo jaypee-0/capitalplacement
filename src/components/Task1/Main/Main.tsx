@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, FormControl, TextField, Checkbox, Button, Switch, FormControlLabel } from "@mui/material";
+import { Box, FormControl, TextField, Checkbox, Switch, FormControlLabel } from "@mui/material";
 import { ArrowForwardIos, Add } from "@mui/icons-material";
 import { DropzoneDialog } from "mui-file-dropzone";
 import { Typography } from "@material-ui/core";

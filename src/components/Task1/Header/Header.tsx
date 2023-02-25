@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.css";
 import Divider from "@mui/material/Divider";
 
 const Header = () => {
-    const [selected, setSelected] = useState(true);
+    const selected = true;
     return (
         <div className="h-[110px] w-full">
             <div className="headerTabs__container">
