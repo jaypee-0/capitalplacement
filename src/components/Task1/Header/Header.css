@@ -1,0 +1,11 @@
+.headerTabs__container {
+  display: flex;
+  height: 110px;
+  width: 1400px;
+  justify-content: flex-start;
+  text-align: center;
+}
+.headerTabs__subContainer {
+  width: 280px;
+  color: #00635b;
+}
