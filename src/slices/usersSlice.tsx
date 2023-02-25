@@ -8,16 +8,15 @@ interface UsersDeets {
     image: string;
     phone: string
     gender: string;
-    dateOfBirth: string|any;
-    emailAddress: string;
+    email: string;
 } 
 interface UsersProps {
+    id: number|any,
     users: Array<UsersDeets>,
-    id: number
 } 
 const initialState:UsersProps = {
+    id: 1,
     users: [],
-    id: 0
 };
 
 export const usersSlice:any = createSlice({
@@ -27,7 +26,7 @@ export const usersSlice:any = createSlice({
         setUsers: (state: UsersProps, action: PayloadAction<any>) => {
             state.users = action.payload;
         },
-        setID: (state: UsersProps, action: PayloadAction<any>) => {
+        setID: (state, action: PayloadAction<any>) => {
             state.id = action.payload;
         }
     }

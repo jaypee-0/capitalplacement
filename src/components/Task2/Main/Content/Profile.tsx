@@ -3,20 +3,18 @@ import Box from "@mui/material/Box";
 import { Viewer } from "@react-pdf-viewer/core";
 import { CircularProgress } from "@mui/material";
 import { useGetOneUserQuery } from "../../../../services/generalApi";
-import { selectID } from "../../../../slices/usersSlice";
-import { useSelector } from "react-redux";
 
-const Profile:any = () => {
+const Profile:any = ({idO, setidO}:any) => {
     const nationality = "Nigerian";
-    const id = useSelector(selectID);
-    console.log(id, "-ID");
+    
+    console.log(idO, "- -ID");
     const pdfUrl = require("../../../../assets/EyibraJohnpaulCV20230111.pdf");
-
-    const { data, isLoading, isFetching } = useGetOneUserQuery(id ? id : 1, {
+    
+    const { data, isLoading, isFetching } = useGetOneUserQuery(idO ? idO : 1, {
         refetchOnMountOrArgChange: true,
         skip: false
     });
-
+    
     if (isLoading || isFetching) {
         return (
             <Box

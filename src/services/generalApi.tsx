@@ -1,6 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
-import { idText } from 'typescript';
 
 const BaseUrl:string = 'https://dummyjson.com'
 

@@ -4,6 +4,7 @@ import MainTabs from "./Tabs/MainTabs";
 import Content from "./Content/Content";
 
 const Main = () => {
+    const [idO, setidO] = React.useState<any>(1)
     return (
         <Box
             sx={{
@@ -27,7 +28,7 @@ const Main = () => {
                         position: 'fixed'
                     }}
                 >
-                    <MainTabs />
+                    <MainTabs idO={idO} setidO={setidO} />
                 </Box>
                 <Box
                     sx={{
@@ -38,7 +39,7 @@ const Main = () => {
                     }}
                 >
 
-                    <Content />
+                    <Content idO={idO} setidO={setidO} />
                 </Box>
             </Box>
         </Box>

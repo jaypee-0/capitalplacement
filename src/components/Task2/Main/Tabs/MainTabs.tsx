@@ -34,7 +34,7 @@ function a11yProps(index: number) {
     };
 }
 
-function MainTabs() {
+function MainTabs({idO, setidO}:any) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -62,7 +62,7 @@ function MainTabs() {
             </Tabs>
             <Divider sx={{ width: "230px", marginLeft: "35px" }} />
             <TabPanel value={value} index={0}>
-                <Qualified />
+                <Qualified idO={idO} setidO={setidO} />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Disqualified />

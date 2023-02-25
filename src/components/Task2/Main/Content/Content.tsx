@@ -37,7 +37,7 @@ function a11yProps(index: number) {
     };
 }
 
-const Content = () => {
+const Content = ({idO, setidO}:any) => {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -76,7 +76,7 @@ const Content = () => {
             </Tabs>
             <Divider sx={{ width: "100%"}} />
             <TabPanel value={value} index={0}>
-                <Profile />
+                <Profile idO={idO} setidO={setidO} />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Video />

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectID, selectUsers, setID } from "../../../../slices/usersSlice";
+import { selectUsers, setID } from "../../../../slices/usersSlice";
 import { LocationOn } from "@mui/icons-material";
 import SchoolIcon from "@mui/icons-material/School";
 
@@ -11,7 +11,7 @@ interface PersonProps {
     image: string;
     address: {} | any;
 }
-const Qualified = () => {
+const Qualified = ({idO, setidO}:any) => {
     const dispatch = useDispatch();
     const persons = useSelector(selectUsers);
     //console.log(persons, "-- PERSONS");
@@ -23,12 +23,13 @@ const Qualified = () => {
         if (activeIndex === id) {
             return setActiveIndex(activeIndex);
         } else {
-          dispatch(setID(activeIndex));
           setActiveIndex(id);
+          dispatch(setID(id));
+          setidO(id)
+          console.log(idO, "ido")
         }
     };
 
-    console.log(useSelector(selectID), "-- SELECT ID");
     return (
         <div>
             <div>
