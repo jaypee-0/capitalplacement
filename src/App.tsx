@@ -1,24 +1,30 @@
 import "./styles/App.css";
 import React from "react";
 import Task1 from "./pages";
-import Box from "@mui/material/Box";
 import Employer from "./pages/Employer";
+import Box from "@mui/material/Box";
 import { CircularProgress } from "@mui/material";
-import { useGetFormDetailsQuery } from "./services/generalApi";
+import { useGetFormDetailsQuery, useGetUsersQuery } from "./services/generalApi";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Worker } from "@react-pdf-viewer/core";
+import { useDispatch } from "react-redux";
+import { setUsers } from "./slices/usersSlice";
 
 function App() {
+    const dispatch = useDispatch();
+    
     const version = 0.1;
     const [programId, setprogramId] = React.useState<any>("");
 
-    const { data, isLoading } = useGetFormDetailsQuery(version, programId);
-    console.log(data, "-- DATA");
-    React.useEffect(() => {
-        setprogramId("497f6eca-6276-4993-bfeb-53cbbbba6f08");
-    }, []);
+    const { data } = useGetFormDetailsQuery(version, programId);
+    const { data:users, isLoading } = useGetUsersQuery(version, programId);
 
-    if (isLoading)
+    React.useEffect(() => {
+        !isLoading && dispatch(setUsers(users?.users))        
+        setprogramId("497f6eca-6276-4993-bfeb-53cbbbba6f08");
+    }, [users, dispatch,isLoading]);
+
+    if (isLoading) {
         return (
             <Box
                 sx={{
@@ -34,6 +40,10 @@ function App() {
                 <CircularProgress size={100} color="success" />
             </Box>
         );
+    }
+    console.log(data, "-- DATA");
+    //console.log(users?.users, "-- USERS"); 
+
     return (
       <>
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.3.122/build/pdf.worker.min.js">

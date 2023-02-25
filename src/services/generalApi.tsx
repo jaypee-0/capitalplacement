@@ -1,7 +1,8 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
+import { idText } from 'typescript';
 
-const BaseUrl:string = 'http://127.0.0.1:3100'
+const BaseUrl:string = 'https://dummyjson.com'
 
 interface axiosProps {
   url: string;
@@ -34,10 +35,13 @@ export const generalApi = createApi({
     getFormDetails: builder.query<number, any>({
       query: ({version, programId}) => ({ url: `/api/${version}/programs/${programId}/application-form`, method: 'GET' }),
     }),
-    getSiteDetails: builder.query({
-      query: () => ({ url: ``, method: 'GET' }),
+    getUsers: builder.query({
+      query: () => ({ url: `/users`, method: 'GET' }),
     }),
-    suscribeEmail: builder.mutation({
+    getOneUser: builder.query({
+      query: (id) => ({ url: `/users/${id}`, method: 'GET' }),
+    }),
+    setFormDetails: builder.mutation({
       query: (body) => ({
         url: '',
         method: 'PUT',
@@ -49,7 +53,9 @@ export const generalApi = createApi({
 
 export const {
   useGetFormDetailsQuery,
-  useSuscribeEmailMutation,
+  useGetUsersQuery,
+  useGetOneUserQuery,
+  useSetFormDetailsMutation,
 } = generalApi;
 
 export const { endpoints, reducerPath, reducer } = generalApi;
