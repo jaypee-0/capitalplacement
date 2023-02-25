@@ -1,6 +1,6 @@
 import React from "react";
 import { Add } from "@mui/icons-material";
-import ReactPlayer from "react-player";
+import ReactPlayer from 'react-player/lazy'
 
 const Video = () => {
     const [activeIndex, setActiveIndex] = React.useState<number | boolean>(1);
@@ -48,8 +48,8 @@ const Video = () => {
 
                     <p className="text-right text-red-700 font-bold mt-auto">Delete video</p>
                 </div>
-                <div className="rounded-xl bg-[#fff] h-[330px] w-[500px]">
-                    <ReactPlayer className="react-player" url="https://www.youtube.com/watch?v=ysz5S6PUM-U" width="100%" height="100%" />
+                <div className="rounded-2xl bg-[#fff] h-[330px] w-[500px]">
+                    <ReactPlayer style={{borderRadius: 50}} url="https://www.youtube.com/watch?v=rQ4CCTgsdcU" width="100%" height="100%" />
                 </div>
             </div>
 
